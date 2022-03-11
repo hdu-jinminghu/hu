@@ -1,0 +1,42 @@
+@historyNoteDataArr:{Accuracy:#00A0E9;Loss:rgb(25, 114, 187)};
+ 
+each(@historyNoteDataArr, {
+    #@{key}{
+      width: 13px;
+      height:13px;
+      background-color: @value;
+      margin:8px 16px;
+      border-radius: 35%;
+      &:after {
+        font-size: 3px;
+        content:'@{key}';
+        color:#404040;
+        position: relative;
+        left:18px;
+        bottom: 7px;
+      }
+    }
+});
+
+@historyNoteTypeArr:{Saved:#67C23A;NotSaved:#EB6100};
+ 
+each(@historyNoteTypeArr, {
+    #@{key}{
+      box-sizing: border-box;
+      width: 13px;
+      height:13px;
+      background-color: white;
+      margin:8px 16px;
+      border-radius: 35%;
+      border: 2px solid @value;
+      box-shadow:inset 0px -3px 4px 0 @value;
+      &:after {
+        font-size: 3px;
+        content:'@{key}';
+        color:#404040;
+        position: relative;
+        left:18px;
+        bottom: 8px;
+      }
+    }
+});

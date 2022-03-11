@@ -1,0 +1,485 @@
+@deep: ~'/deep/';
+
+@historyNoteDataArr:{Accuracy:#00A0E9;Loss:rgb(25, 114, 187)};
+ 
+each(@historyNoteDataArr, {
+    #@{key}{
+      width: 13px;
+      height:13px;
+      background-color: @value;
+      margin:8px 16px;
+      border-radius: 35%;
+      &:after {
+        font-size: 3px;
+        content:'@{key}';
+        color:#404040;
+        position: relative;
+        left:18px;
+        bottom: 7px;
+      }
+    }
+});
+
+@historyNoteTypeArr:{Saved:#67C23A;NotSaved:#EB6100};
+ 
+each(@historyNoteTypeArr, {
+    #@{key}{
+      box-sizing: border-box;
+      width: 13px;
+      height:13px;
+      background-color: white;
+      margin:8px 16px;
+      border-radius: 35%;
+      border: 2px solid @value;
+      box-shadow:inset 0px -3px 4px 0 @value;
+      &:after {
+        font-size: 3px;
+        content:'@{key}';
+        color:#404040;
+        position: relative;
+        left:18px;
+        bottom: 8px;
+      }
+    }
+});
+
+@nodeType:{Conv:aquamarine;Others:wheat;Dropout:deepskyblue;Relu:chartreuse;BatchNorm:orange};
+each(@nodeType, {
+    #@{key}{
+      width: 13px;
+      height:13px;
+      background-color: @value;
+      margin:8px 16px;
+      border-radius: 35%;
+      &:after{
+        font-size: 3px;
+        content:'@{key}';
+        color:#404040;
+        position: relative;
+        left:18px;
+        bottom: 2px;
+      }
+    }
+});
+
+#annotationMain{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.controlPanel{
+  padding:0px 24px;
+}
+/deep/.update{
+  .path{
+    transition: all 0.7s ease 0s;
+  }
+}
+/deep/.nodes{
+  .update{
+    transition: all 0.7s ease 0s;
+  }
+}
+/deep/.clusters{
+  .cluster{
+    transition: all 0.7s ease 0s;
+  }
+}
+.content{
+  height:calc(100% - 63px)
+}
+/deep/.el-tabs__header{
+  margin: 0;
+}
+@headerButtonHeight:32px;
+@headerButtonWidth:12px;
+.header {
+  padding: 0 50px;
+  height:64px;
+  line-height:64px;
+  background: #67C23A;
+  margin-bottom: 4px;
+  .title{
+    font-family: Impact,Haettenschweiler,Arial Narrow Bold,sans-serif;
+    font-size: 40px;
+    color: #fff;
+    text-align:left;
+  }
+}
+
+.header.button_right{
+  position: absolute;
+  right: 0%;
+  top: calc( (64px - @headerButtonHeight)/2);
+  height: @headerButtonHeight;
+  width: @headerButtonWidth;
+  border-radius: 50px;
+  border: 1px solid blue;
+  line-height: @headerButtonHeight;
+  text-anchor: start;
+  background-color: #00A0E9;
+}
+.header.button_select{
+  position: absolute;
+  right: 112px;
+  height: @headerButtonHeight;
+  top: calc( (64px - @headerButtonHeight)/2);
+  padding: 0%;
+  line-height: @headerButtonHeight;
+}
+.editPage.open{
+  visibility: visible;
+}
+.editPage.close{
+  visibility: hidden;
+}
+.editPage{
+  position: absolute;
+  width:100%;
+  height:calc( 100% - 64px);
+}
+#anim{
+  position: absolute;
+  right: 15px;
+  top: 2px;
+  margin: 0;
+  font-size: 30px;
+}
+.mainStyle {
+  width: 70%;
+  height:100%;
+  display:flex;
+  flex-direction: column;
+  .GraphView{
+    width:100%;
+    height: 55%;
+    display:flex;
+    flex-direction: column;
+    position: relative;
+    margin: 8px;
+    background-color: white;
+    box-shadow: inset -2px 0px 3px 0px rgba(0,0,0,0.12),inset 0px -2px 3px 0px rgba(0,0,0,0.24);
+    border-radius: 10px;
+    .Graph{
+      width:100%;
+      height: calc( 100% - 30px);
+      position: relative;
+      .toolTipStyle{
+        position: absolute;
+        top: 10px;
+        z-index: 100;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        /deep/input{
+          border-radius: 20px;
+        }
+        /deep/.el-cascader{
+          line-height:25px;
+        }
+        /deep/.el-input__inner{
+          height: 25px;
+          line-height:25px;
+        }
+        /deep/.el-input{
+          width:130px;
+        }
+        div{
+          margin: 1px 0 1px 0;
+        }
+        /deep/.el-icon-arrow-down::before{
+          position: relative;
+          bottom: 5px;
+        }
+        /deep/.el-icon-arrow-down::after{
+          position: relative;
+          top: 5px;
+        }
+        .content{
+          width:80px;
+          line-height:26px;
+          font-size:3px;
+        }
+      }
+    }
+    #process{
+      position: absolute;
+      bottom: 10px;
+      right: 15px;
+      margin: 0;
+      font-size: 30px;
+    }
+  }
+  
+}
+.footerStyle{
+  height:calc(100% - 55%);
+  width:100%;
+  margin: 0 8px 0 8px;
+  display: flex;
+  flex-direction: row;
+  .scalarView{
+    border-radius: 2px;
+    margin: 8px;
+    width:calc(100% - 16px);
+    height: calc(100% - 16px);
+    background-color: white;
+    box-shadow: inset -2px 0px 3px 0px rgba(0,0,0,0.12),inset 0px -2px 3px 0px rgba(0,0,0,0.24);
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    .scalarHeader{
+      position: relative;
+      height: 48px;
+      line-height:48px;
+      font-family: Helvetica Neue For Number,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
+      text-align:left;
+      padding: 0 30px;
+      font-size: 1.2em;
+      font-weight: 500;
+    }
+    .scalarHeader::before{
+      content: '';
+      position: relative;
+      left: -10px;
+      top:3px;
+      height:1em;
+      display: inline-block;
+      width:9px;
+      background-color:#67C23A;
+    }
+    .scalarContent{
+      height: calc(100% - 48px);
+    }
+    /deep/.el-tabs--border-card>.el-tabs__header{
+      background-color:white;
+      opacity: 1;
+      border: 0;
+    }
+    /deep/.el-tabs__nav-wrap.is-scrollable{
+      border-radius: 30px;
+    }
+    /deep/.el-tabs--border-card{
+      box-shadow: 0 0;
+      border: 0;
+    }
+    /deep/.el-tabs__nav{
+      background-color: #F1F1F1;
+    }
+    /deep/.el-tabs__nav-scroll{
+      border-radius: 30px;
+    }
+    /deep/.controlPanel{
+      transform: scale(1,0.9);
+    }
+    /deep/.el-tabs--border-card>.el-tabs__header .el-tabs__item.is-active{
+      background-color: #67C23A;
+      color: #fff;
+      border-radius: 30px;
+    }
+    /deep/.el-tabs__item{
+      font-size: 1rem;
+      height: 32px;
+      line-height: 32px;
+    }
+    /deep/.el-tabs__nav-scroll{
+      margin: 5px 0;
+    }
+    /deep/.el-tabs__nav-prev,/deep/.el-tabs__nav-next{
+      transform: scale(1.5);
+    }
+  }
+
+  .indicatorView{
+    border-radius: 2px;
+    margin: 8px;
+    width:calc(100% - 16px);
+    height: calc(100% - 16px);
+    background-color: white;
+    box-shadow: inset -2px 0px 3px 0px rgba(0,0,0,0.12),inset 0px -2px 3px 0px rgba(0,0,0,0.24);
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    .indicatorHeader{
+      position: relative;
+      height: 48px;
+      line-height:48px;
+      font-family: Helvetica Neue For Number,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
+      text-align:left;
+      padding: 0 30px;
+      font-size: 1.2em;
+      font-weight: 500;
+    }
+    .indicatorHeader::before{
+      content: '';
+      position: relative;
+      left: -10px;
+      top:3px;
+      height:1em;
+      display: inline-block;
+      width:9px;
+      background-color:#67C23A;
+    }
+    .indicatorContent{
+      height: calc(100% - 48px);
+    }
+  }
+}
+/deep/ .el-timeline-item__content{
+  word-break: break-all;
+}
+
+.div_2 {
+  width:100%;
+  height:60%;
+  border: 1px solid black;
+}
+.global {
+  display: flex;
+  flex-direction: column;
+  width: 49.5%;
+}
+
+.featureStyle {
+  width: 100%;
+  height:29.5%;
+  display: flex;
+  flex-direction: row;
+}
+.div_1 {
+  width: 100%;
+  height:40%;
+  border: 1px solid black;
+}
+h1, h2 {
+  font-weight: normal;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+a {
+  color: #42b983;
+}
+/deep/.el-tabs--border-card>.el-tabs__content{
+  padding: 0;
+}
+/deep/.footerStyle .scalarView .el-tabs__nav{
+  border-radius: 30px;
+}
+.controlParam{
+  height: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 2px solid gray;
+  font-size: 3px;
+  line-height: 30px;
+}
+
+.controlParam .el-input{
+  width:50px;
+  height:20px;
+  position: relative;
+  align-self: center;
+}
+.controlParam /deep/.el-input__inner{
+  position: absolute;
+  top:0;
+  left: 0;
+  height: 20px;
+  width: 40px;
+  border: transparent;
+  padding: 0;
+  text-align: center;
+  border-radius: 0;
+  border-bottom: 1px solid black;
+}
+.controlParam span{
+  margin-left: 5px;
+}
+.controlParam .el-cascader{
+  width:140px;
+  height: 30px;
+}
+.controlParam /deep/.el-cascader .el-input{
+  display: block;
+  width:140px;
+  height: 30px;
+  display: flex;
+}
+.controlParam /deep/.el-cascader .el-input__inner{
+  width:140px;
+  position: relative;
+  align-self: center;
+}
+.controlParam .controlButton{
+  position: absolute;
+  right:0;
+  width:160px;
+}
+.controlButton button{
+  font-size: 3px;
+  padding: 5px 1px;
+  width: 48px;
+}
+.History{
+    // display: none;
+    width:100%;
+    height:100%;
+    margin: 8px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: inset -2px 0px 3px 0px rgba(0,0,0,0.12),inset 0px -2px 3px 0px rgba(0,0,0,0.24);
+    border-radius: 10px;
+    .HistoryHead{
+      position: relative;
+      height: 48px;
+      line-height:48px;
+      // border-bottom: 1px solid #e9e9e9;
+      font-family: Helvetica Neue For Number,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
+      text-align:left;
+      padding: 0 30px;
+      font-size: 1.2em;
+      font-weight: 500;
+    }
+    .HistoryHead::before{
+      content: '';
+      position: relative;
+      left: -10px;
+      top:3px;
+      height:1em;
+      display: inline-block;
+      width:9px;
+
+      background-color:#67C23A;
+    }
+    .HistoryContent{
+      margin: 0 20px;
+      padding-top: 10px;
+      height:calc( 100% - 163px);
+      overflow:auto;
+    }
+  }
+  .History-open{
+
+  }
+  .History-close{
+    display: none;
+  }
+  .panel-change{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    right: 0;
+    top: 8px;
+    color: #00A0E9;
+    background-color: #00A0E9;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+  .section-right{
+    position: relative;
+    width:30%;
+    height:100%;
+  }

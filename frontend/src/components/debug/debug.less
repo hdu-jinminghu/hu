@@ -1,0 +1,79 @@
+.debug-view{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    // background-color: white;
+}
+.small-plug{
+    width: 100%;
+    height: 30%;
+    background-color: #eee;
+    display: flex;
+    flex-direction: row;
+}
+
+.plug-scalar{
+    border-radius: 5px;
+    position: relative;
+    width: calc( 50% - 4px);
+    margin-top: 8px;
+    margin-right: 4px;
+    height: calc( 100% - 16px);
+    // border: 1px solid #eee;
+    background-color: white;
+}
+
+.plug-indicator{
+    border-radius: 5px;
+    width: calc( 50% - 4px);
+    margin-top: 8px;
+    margin-left: 4px;
+    height: calc( 100% - 16px);
+
+    // border: 1px solid #eee;
+    background-color: white;
+}
+
+.big-plug{
+    width: 100%;
+    height: calc( 70% - 30px );
+}
+.buttonList{
+    border-radius: 5px;
+    background-color: white;
+    // margin-top: 5px;
+    height: 25px;
+}
+// .plug-toggle{
+//     position: absolute;
+//     right: 0;
+//     top: 0;
+//     height: 20px;
+//     display: flex;
+//     flex-direction: row;
+//     .toggle-button{
+//         margin: 0 2px;
+//         width: 60px;
+//         background-color: lightblue;
+//     }
+// }
+
+.plug-toggle{
+    position: absolute;
+    top: 5px;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    left: calc( 50% - 90px );
+    .toggle-button{
+        width: 100px;
+        border-radius: 50px;
+        background-color: lightgray;
+    }
+    .toggle-button-active{
+        background-color: #0F4E98;
+        z-index: 10;
+        color: white;
+    }
+}

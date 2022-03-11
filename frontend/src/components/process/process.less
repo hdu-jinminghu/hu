@@ -1,0 +1,45 @@
+@small-tri:25px;
+@big-tri:30px;
+.title{
+    width: 30%;
+    line-height: 50px;
+    // background-color: red;
+    height: 100%;
+    margin: auto;
+    font-size: 18px;
+}
+.process-container{
+    border-radius: 5px;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+}
+.big-triangle{
+    position: relative;
+    border-style: solid;
+    border-width: @big-tri @big-tri @big-tri @big-tri;
+    border-color: transparent transparent transparent #eee;
+    width: 0px;
+    height: 0px;
+    top:@small-tri - @big-tri;
+    // background-color: red;
+}
+.small-triangle{
+    position: relative;
+    border-style: solid;
+    border-width: @small-tri @small-tri @small-tri @small-tri;
+    border-color: transparent transparent transparent white;
+    width: 0px;
+    height: 0px;
+    top:-@small-tri;
+    left:-@big-tri;
+}
+.activep{
+    background-color: #0F4E98;
+    color: white;
+}
+.activep-tri{
+    border-color: transparent transparent transparent #0F4E98;
+}

@@ -1,0 +1,45 @@
+@default-margin: 8px;
+@process-title: 50px;
+.layout{
+    width: 100%;
+    height: 100%;
+    background-color: #eee;
+    position: relative;
+}
+
+.head{
+    height: 30px;
+    margin: @default-margin;
+    background-color: white;
+}
+.body{
+    position: relative;
+    height: calc( 100% - 30px - 3*@default-margin);
+    margin: @default-margin;
+    display: flex;
+    flex-direction: row;
+}
+.model-view{
+    border-radius: 5px;
+    position: relative;
+    height: 100%;
+    width: 60%;
+    margin-right: @default-margin;
+    background-color: white;
+}
+.panel{
+    height: 100%;
+    width: calc( 40% - @default-margin );
+    background-color: #eee;
+}
+.process{
+    width: 100%;
+    margin-bottom: 8px;
+    height: @process-title;
+}
+.content{
+    border-radius: 5px;
+    width: 100%;
+    height: calc( 100% - @process-title - 8px);
+    overflow-y: auto;
+}

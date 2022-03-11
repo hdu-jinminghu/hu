@@ -1,0 +1,28 @@
+@itemHeight: 25px;
+.attr-box{
+    position: relative;
+    max-height: 400px;
+    margin-bottom: 4px;
+    &:after{
+        content: '';
+        width: 0;
+        height: 0;
+        display: block;
+        clear: both;
+    }
+}
+.attr-item{
+    height: @itemHeight;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    line-height: @itemHeight;
+    float: left;
+    .attr-title{
+        width: 250px;
+    }
+    /deep/input{
+        height: @itemHeight;
+        width: 50%;
+    }
+}
